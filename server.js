@@ -14,6 +14,8 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 
+const port = process.env.PORT || 3020;
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -106,7 +108,7 @@ app.get("/chats", (req, res) => {
 
 
 
-server.listen(3020, () => {
+server.listen(port, () => {
 
     console.log("Well done, now I am listening...")
 
