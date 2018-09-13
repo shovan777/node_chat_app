@@ -44,7 +44,7 @@
 
          $.get("/chats", (chats) => {
 
-             chats.forEach(addChat)
+             chats.forEach(addChat);
 
          });
 
@@ -60,6 +60,17 @@
     var socket = io();
 
     socket.on("chat", addChat);
+    socket.on("chatme", () => {
+      var chatMessage = {
+
+          name: $("#txtName").val(), chat: $("#txtMessage").val()
+
+      }
+
+      postChat(chatMessage);
+      getChats();
+
+    });
 
 </script>
 
