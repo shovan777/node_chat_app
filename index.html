@@ -60,13 +60,8 @@
     var socket = io();
 
     socket.on("chat", addChat);
-    socket.on("chatme", () => {
-      var chatMessage = {
-
-          name: $("#txtName").val(), chat: $("#txtMessage").val()
-
-      }
-
+    socket.on("chatme", (message) => {
+      var chatMessage = message;
       postChat(chatMessage);
       getChats();
 
