@@ -59,6 +59,28 @@ var Chats = mongoose.model('Chats', schema);
 io.on('connection', (socket) => {
   console.log('New user connected');
 
+  socket.on("chatme", (message) => {
+      console.log("inside chatme");
+      var chatMessage = {
+        name: 'swaingade',
+        chat: message
+      };
+      
+      try {
+	console.log(chatMessage);
+        var chat = new Chats(chatMessage);
+        chat.save();
+        io.emit('chat', chatMessage);
+        
+    } catch (error) {
+
+        console.error(error);
+
+    }
+      
+
+    });
+
   socket.on('disconnect', () => {
     console.log('User was disconnected');
   });
@@ -80,6 +102,7 @@ app.post("/chats", async (req, res) => {
 
         // Emit chat event
         io.emit('chat', req.body);
+        // io.emit('chatme', hello);
 
     } catch (error) {
 

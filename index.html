@@ -61,16 +61,7 @@
 
 
     socket.on("chat", addChat);
-    socket.on("chatme", (message) => {
-      var chatMessage = {
-        name: 'swaingade',
-        chat: message
-      };
-      console.log(chatMessage);
-      postChat(chatMessage);
-      getChats();
-
-    });
+    
 
 </script>
 
