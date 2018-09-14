@@ -52,7 +52,7 @@
 
     function addChat(chatObj){
 
-        $("#messages").append(`<h5>${chatObj.name} </h5><p>${chatObj.chat}</p>`);
+        $("#messages").append(`<h5>${chatObj.name} </h5><p>${chatObj.message}</p>`);
         // postChat(chatObj);
 
     }
@@ -61,7 +61,7 @@
 
 
     socket.on("chat", addChat);
-    
+
 
 </script>
 
