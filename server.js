@@ -54,7 +54,7 @@ var Chats = mongoose.model('Chats', schema);
 io.on('connection', (socket) => {
   console.log('New user connected');
 
-  socket.on("chatme", (message) => {
+  socket.on("chatToServer", (chatMessage) => {
     console.log("inside chatme");
     // var chatMessage = {
     //   name: 'swaingade',
@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
       console.log(chatMessage);
       var chat = new Chats(chatMessage);
       chat.save();
-      io.emit('chat', chatMessage);
+      io.emit('chatFromServer', chatMessage);
 
     } catch (error) {
 

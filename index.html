@@ -60,7 +60,10 @@
     var socket = io();
 
 
-    socket.on("chat", addChat);
+    socket.on("chatFromServer", function (chatMessage) {
+      addChat(chatMessage);
+
+    });
 
 
 </script>
